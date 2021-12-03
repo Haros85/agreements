@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'agreements.apps.AgreementsConfig'  # Соглашения
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -45,11 +45,11 @@ class Agreements(models.Model):
         verbose_name=u"Уполномоченные подразделения",
     )
     note = models.TextField()
-    file = models.FileFiejd()
+    file = models.FileField()
 
     @property
     def display_dept(self):
-        return ", ".join([departments.name for departments in self.departments.all()])
+        return ", ".join([departments.title for departments in self.departments.all()])
 
     class Meta:
         verbose_name = u"Соглашение"
@@ -75,11 +75,11 @@ class Additional(models.Model):
         verbose_name=u"Уполномоченные подразделения",
     )
     note = models.TextField()
-    file = models.FileFiejd()
+    file = models.FileField()
 
     @property
     def display_dept(self):
-        return ", ".join([departments.name for departments in self.departments.all()])
+        return ", ".join([departments.title for departments in self.departments.all()])
 
     class Meta:
         verbose_name = u"Доп. соглашение"
@@ -118,7 +118,7 @@ class Protocol(models.Model):
     from_mvd = models.TextField()  # Перечень сведений от МВД
     for_mvd = models.TextField()  # Перечень сведений для МВД
     note = models.TextField()
-    file = models.FileFiejd()
+    file = models.FileField()
 
     class Meta:
         verbose_name = u"Протокол"
