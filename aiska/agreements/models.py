@@ -11,10 +11,10 @@ class Foiv(models.Model):
         verbose_name_plural = u"ФОИВы"
 
     def __unicode__(self):
-        return self.name
+        return self.title
 
     def __str__(self):
-        return self.name
+        return self.title
 
 
 # Таблица Подразделения
@@ -26,15 +26,15 @@ class Department(models.Model):
         verbose_name_plural = u"Подразделения"
 
     def __unicode__(self):
-        return self.name
+        return self.title
 
     def __str__(self):
-        return self.name
+        return self.title
 
 
 # Таблица Соглашения
 class Agreements(models.Model):
-    foiv_id = models.ForeignKey(Foiv, n_delete=models.CASCADE, blank=True, null=True)
+    foiv_id = models.ForeignKey(Foiv, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=250)
     number = models.CharField(max_length=20)
     reg_date = models.DateField()
@@ -45,7 +45,7 @@ class Agreements(models.Model):
         verbose_name=u"Уполномоченные подразделения",
     )
     note = models.TextField()
-    file = models.FileField()
+    file = models.FileField(upload_to='agreements/')
 
     @property
     def display_dept(self):
@@ -56,15 +56,15 @@ class Agreements(models.Model):
         verbose_name_plural = u"Соглашения"
 
     def __unicode__(self):
-        return self.name
+        return self.title
 
     def __str__(self):
-        return self.name
+        return self.title
 
 
 # Таблица Дополнительные соглашения
 class Additional(models.Model):
-    agr_id = models.ForeignKey(Agreements, n_delete=models.CASCADE, blank=True, null=True)
+    agr_id = models.ForeignKey(Agreements, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=250)
     number = models.CharField(max_length=20)
     reg_date = models.DateField()
@@ -75,7 +75,7 @@ class Additional(models.Model):
         verbose_name=u"Уполномоченные подразделения",
     )
     note = models.TextField()
-    file = models.FileField()
+    file = models.FileField(upload_to='additional/')
 
     @property
     def display_dept(self):
@@ -86,10 +86,10 @@ class Additional(models.Model):
         verbose_name_plural = u"Доп. соглашения"
 
     def __unicode__(self):
-        return self.name
+        return self.title
 
     def __str__(self):
-        return self.name
+        return self.title
 
 
 # Таблица Типы протоколов
@@ -101,31 +101,31 @@ class Type(models.Model):
         verbose_name_plural = u"Типы протоколов"
 
     def __unicode__(self):
-        return self.name
+        return self.type_protocol
 
     def __str__(self):
-        return self.name
+        return self.type_protocol
 
 
 # Таблица Протоколы
 class Protocol(models.Model):
-    agr_id = models.ForeignKey(Agreements, n_delete=models.CASCADE, blank=True, null=True)
+    agr_id = models.ForeignKey(Agreements, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=250)
     number = models.CharField(max_length=20)
     reg_date = models.DateField()
     inv_number = models.CharField(max_length=20)
-    type_id = models.ForeignKey(Type, n_delete=models.CASCADE, blank=True, null=True)
+    type_id = models.ForeignKey(Type, on_delete=models.CASCADE, blank=True, null=True)
     from_mvd = models.TextField()  # Перечень сведений от МВД
     for_mvd = models.TextField()  # Перечень сведений для МВД
     note = models.TextField()
-    file = models.FileField()
+    file = models.FileField(upload_to='protocol/')
 
     class Meta:
         verbose_name = u"Протокол"
         verbose_name_plural = u"Протоколы"
 
     def __unicode__(self):
-        return self.name
+        return self.title
 
     def __str__(self):
-        return self.name
+        return self.title
