@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="padding-top: 20px;">
+    <table class="table table-bordered table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" class="text-center align-middle" style="background-color: #016ab4; border-color: #4588ca; width: 100px;">Дата</th>
+                <th scope="col" class="text-center align-middle" style="background-color: #016ab4; border-color: #4588ca;">СМИ</th>
+                <th scope="col" class="text-center align-middle" style="background-color: #016ab4; border-color: #4588ca; width: 500px;">Новость</th>
+                <th scope="col" class="text-center align-middle" style="background-color: #016ab4; border-color: #4588ca;">Ссылка</th>
+                <th scope="col" class="text-center align-middle" style="background-color: #016ab4; border-color: #4588ca;">Ключевые слова</th>
+                <th scope="col" class="text-center align-middle" style="background-color: #016ab4; border-color: #4588ca;">Дети</th>
+                <th scope="col" class="text-center align-middle" style="background-color: #016ab4; border-color: #4588ca;">Категория новостей</th>
+                <th scope="col" class="text-center align-middle" style="background-color: #016ab4; border-color: #4588ca;">Тип СМИ</th>
+                <th scope="col" class="text-center align-middle" style="background-color: #016ab4; border-color: #4588ca;">Служба</th>
+                <th scope="col" class="text-center align-middle" style="background-color: #016ab4; border-color: #4588ca;">
+                    <a href="{% url 'export_csv' %}?date={% now 'Y-m-d' %}"><img src="{% static 'admin/img/icon-export.png' %}" width="24px" alt="Export"></a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doc in docs %}
+            <tr>
+                <th scope="row" class="text-center">{{ doc.reg_date|date:"Y-m-d" }}</th>
+                <td class="text-center"><a href="{{ post.smi.url }}">{{ doc.title }}</a></td>
+                <td>{{ doc.name }}</td>
+                <td><a href="{{ post.url }}">{{ doc.url }}</a></td>
+                <td class="text-center">{{ doc.display_key }}</td>
+                <td class="text-center">
+                    {% if doc.age %}
+                    <img src="{% static 'admin/img/icon-yes.svg' %}" alt="True"> {% else %}
+                    <img src="{% static 'admin/img/icon-no.svg' %}" alt="False"> {% endif %}
+                </td>
+                <td class="text-center">{{ doc.news_type }}</td>
+                <td class="text-center">{{ doc.smi.type_smi }}</td>
+                <td class="text-center">{{ doc.display_dept }}</td>
+                <td class="text-center align-middle">
+                    <a href="{% url 'edit_link' post.id %}"><img src="{% static 'admin/img/icon-changelink.svg' %}" alt="Edit"></a>
+                    <a href="{% url 'del_link' post.id %}"><img src="{% static 'admin/img/icon-deletelink.svg' %}" alt="Del"></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

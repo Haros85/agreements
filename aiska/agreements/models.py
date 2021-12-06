@@ -19,7 +19,7 @@ class Foiv(models.Model):
 
 # Таблица Подразделения
 class Department(models.Model):
-    title = models.CharField(max_length=20)
+    title = models.CharField(max_length=30)
 
     class Meta:
         verbose_name = u"Подразделение"
