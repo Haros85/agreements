@@ -1,0 +1,72 @@
+.table-dark span {
+	font-size: 13px;
+	color: rgb(69, 73, 78);
+    font-family: font-family: "PT Sans", sans-serif;
+    font-weight: 400;
+    line-height: 1.471;
+}
+
+.count {
+    font-size: 40px;
+    line-height: 47px;
+	font-weight: 700;
+    color: #3796DA;	
+}
+
+ul {
+    list-style: none !important;
+    padding-inline-start: 0;
+}
+
+#header-1 {
+    position: relative;
+    height: 70px;
+    min-width: 960px;
+    background-color: #28639b;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2578b7), color-stop(100%, #015797));
+    background: -webkit-linear-gradient(top, #2578b7, #015797);
+    background: -moz-linear-gradient(top, #2578b7, #015797);
+    background: -ms-linear-gradient(top, #2578b7, #015797);
+    background: -o-linear-gradient(top, #2578b7, #015797);
+    background: linear-gradient(to bottom, #2578b7, #015797);
+    -webkit-box-shadow: 0 1px 2px 0 #00345f;
+    -moz-box-shadow: 0 1px 2px 0 #00345f;
+    box-shadow: 0 1px 2px 0 #00345f;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+#footer-2 {
+    z-index: 10;
+    min-width: 960px;
+    clear: both;
+    height: 60px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #15619a), color-stop(100%, #005a9d));
+    background: -webkit-linear-gradient(top, #15619a, #005a9d);
+    background: -moz-linear-gradient(top, #15619a, #005a9d);
+    background: -ms-linear-gradient(top, #15619a, #005a9d);
+    background: -o-linear-gradient(top, #15619a, #005a9d);
+    background: linear-gradient(to bottom, #15619a, #005a9d);
+        background-color: rgba(0, 0, 0, 0);
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-image: linear-gradient(rgb(21, 97, 154), rgb(0, 90, 157));
+        background-size: auto;
+        background-origin: padding-box;
+        background-clip: border-box;
+}
+
+.page-title {
+    line-height: 26px;
+    font-size: 24px;
+    color: #2a3c49;
+    float: left;
+    margin-bottom: 0;
+    padding: 15px 0 15px 0;
+    letter-spacing: 0.0001em;
+    text-transform: uppercase;
+    font-weight: bold;
+}

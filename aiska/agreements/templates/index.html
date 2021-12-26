@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Табличка</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Соглашения{% endblock %}
+{% block content %}
+{% load static %}
+<h3 class="page-title">Список соглашений с ФОИВ</h3>
 <div style="padding-top: 20px;">
     <table class="table table-bordered table-sm">
         <thead class="thead-dark">
@@ -16,7 +14,7 @@
                 <th scope="col" class="text-center align-middle" style="background-color: #016ab4; border-color: #4588ca;">Инвентарный номер</th>
                 <th scope="col" class="text-center align-middle" style="background-color: #016ab4; border-color: #4588ca;">Предмет соглашения</th>
                 <th scope="col" class="text-center align-middle" style="background-color: #016ab4; border-color: #4588ca;">Примечания</th>
-                <th scope="col" class="text-center align-middle" style="background-color: #016ab4; border-color: #4588ca;">Ссылка</th>
+                <th scope="col" class="text-center align-middle" style="background-color: #016ab4; border-color: #4588ca;">Протокол</th>
                 <th scope="col" class="text-center align-middle" style="background-color: #016ab4; border-color: #4588ca;">Уполномоченные подразделения</th>
             </tr>
         </thead>
@@ -30,12 +28,17 @@
                 <td>{{ doc.inv_number }}</td>
                 <td>{{ doc.subject }}</td>
                 <td>{{ doc.note }}</td>
-                <td>{{ doc.file }}</td>
+                <td>
+                {% for protocol in protocols %}
+                    {% if doc.pk == protocol.agr_id.pk %}
+                        {{ protocol.type_id.type_protocol }}<br>
+                    {% endif %}
+                {% endfor %}
+                </td>
                 <td>{{ doc.display_dept }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
-</body>
-</html>
+{% endblock %}

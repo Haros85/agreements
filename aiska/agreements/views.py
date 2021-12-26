@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from .models import Agreements
+from .models import Agreements, Protocol
 
 
 def index(request):
-    qs = Agreements.objects.order_by("-reg_date")[:2]
-    return render(request, "index.html", {"docs": qs})
+    docs = Agreements.objects.order_by("-reg_date")
+    protocols = Protocol.objects.all
+    return render(request, "index.html", {"docs": docs, "protocols": protocols})
