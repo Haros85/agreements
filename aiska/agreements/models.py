@@ -39,7 +39,7 @@ class Agreements(models.Model):
     number = models.CharField(max_length=20, verbose_name=u"Регистрационный номер")
     reg_date = models.DateField(verbose_name=u"Дата заключения соглашения")
     inv_number = models.CharField(max_length=20, verbose_name=u"Инвентарный номер", blank=True, null=True)
-    subject = models.TextField(verbose_name=u"Предмет соглашения", blank=True, null=True)
+    subject = models.TextField(verbose_name=u"Предмет соглашения")
     departments = models.ManyToManyField(
         Department,
         verbose_name=u"Уполномоченные подразделения", blank=True
