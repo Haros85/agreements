@@ -1,0 +1,35 @@
+{% load static %}
+<nav class="navbar navbar-dark" id="header-1">
+    <a class="navbar-brand align-middle" href="/"><img height="50 px" src="{% static 'admin/img/logo.png' %}"> Соглашения</a>
+    <nav class="my-2 my-md-0 mr-md-3 text-light">
+        {% if user.is_authenticated %}
+        {% if user.profile.sex == 'male' %}
+        <img style="border-radius: 50%; width: 50px;" src="{% static 'admin/img/pm.jpg' %}">
+        {% else %}
+        <img style="border-radius: 50%; width: 50px;" src="{% static 'admin/img/pw.jpg' %}">
+        {% endif %}
+        <a class="p-2 text-light" href="#">{{ user.get_full_name }}</a>
+        <span style="color:red">|</span>
+        <a class="p-2 text-light" href="{% url 'logout'%}">Выход</a>
+        {% else %}
+        <a class="p-2 text-light" href="{% url 'login'%}">Вход</a>
+        <span style="color:red">|</span>
+        <a class="p-2 text-light" href="{% url 'signup'%}">Регистрация</a>
+        {% endif %}
+    </nav>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color:#3796DA!important;">
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/add_agreement/">Добавить Соглашение</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><span style="color:red">|</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/add_protocol/">Добавить Протокол</a>
+            </li>
+        </ul>
+    </div>
+</nav>
